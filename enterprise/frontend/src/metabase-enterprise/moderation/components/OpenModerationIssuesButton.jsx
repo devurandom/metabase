@@ -17,7 +17,7 @@ export function OpenModerationIssuesButton({ className, onClick }) {
   return (
     <Button
       borderless
-      className={cx(className, "text-brand text-brand-hover align-center")}
+      className={cx(className, "py1 text-brand text-brand-hover align-center")}
       onClick={onClick}
     >
       {ngettext(
