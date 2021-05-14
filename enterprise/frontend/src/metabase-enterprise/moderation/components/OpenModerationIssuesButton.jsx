@@ -14,7 +14,7 @@ OpenModerationIssuesButton.propTypes = {
 
 export function OpenModerationIssuesButton({ className, onClick }) {
   const numOpenIssues = getOpenIssues().length;
-  return numOpenIssues > 0 ? (
+  return (
     <Button
       borderless
       className={cx(className, "text-brand text-brand-hover align-center")}
@@ -26,5 +26,5 @@ export function OpenModerationIssuesButton({ className, onClick }) {
         numOpenIssues,
       )}
     </Button>
-  ) : null;
+  );
 }
