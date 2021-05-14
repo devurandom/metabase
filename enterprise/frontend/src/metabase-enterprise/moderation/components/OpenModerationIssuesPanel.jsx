@@ -23,17 +23,21 @@ export function OpenModerationIssuesPanel({ onReturn }) {
         >{t`Open issues`}</Button>
       </div>
       <div className="px2">
-        {issues.map(issue => {
-          return (
-            <ModerationIssueThread
-              key={issue.id}
-              className="py2 border-row-divider"
-              issue={issue}
-              onComment={() => {}}
-              onResolve={() => {}}
-            />
-          );
-        })}
+        {issues.length > 0 ? (
+          issues.map(issue => {
+            return (
+              <ModerationIssueThread
+                key={issue.id}
+                className="py2 border-row-divider"
+                issue={issue}
+                onComment={() => {}}
+                onResolve={() => {}}
+              />
+            );
+          })
+        ) : (
+          <div className="text-body text-medium p1">{t`No open issues`}</div>
+        )}
       </div>
     </div>
   );
