@@ -1,31 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { t } from "ttag";
-import styled from "styled-components";
-
-import { color } from "metabase/lib/colors";
 
 import Button from "metabase/components/Button";
 import Tooltip from "metabase/components/Tooltip";
 
-const BlueHoverTextButton = styled(Button)`
-  :hover {
-    color: ${color("brand")};
-  }
-`;
-
 function QuestionActionButtons({ canWrite, onOpenModal }) {
   return (
-    <div className="my1 flex justify-between align-center">
-      <BlueHoverTextButton
-        className="flex-1"
-        icon="add_to_dash"
-        borderless
-        iconSize={18}
-        onClick={() => onOpenModal("add-to-dashboard")}
-      >
-        Add to a dashboard
-      </BlueHoverTextButton>
+    <div className="p1 flex justify-start align-center column-gap-1">
       {canWrite && (
         <Tooltip tooltip={t`Edit this question`}>
           <Button
@@ -36,12 +18,22 @@ function QuestionActionButtons({ canWrite, onOpenModal }) {
           />
         </Tooltip>
       )}
+      <Tooltip tooltip={t`Add to a dashboard`}>
+        <Button
+          onlyIcon
+          icon="add_to_dash"
+          iconSize={18}
+          onClick={() => onOpenModal("add-to-dashboard")}
+        />
+      </Tooltip>
+      <div className="py1 pr1 mr1 border-right" aria-hidden="true" />
       {canWrite && (
         <Tooltip tooltip={t`Duplicate this question`}>
           <Button
             onlyIcon
             icon="clone"
             iconSize={18}
+            className="text-medium"
             onClick={() => onOpenModal("clone")}
           />
         </Tooltip>
@@ -52,6 +44,7 @@ function QuestionActionButtons({ canWrite, onOpenModal }) {
             onlyIcon
             icon="move"
             iconSize={18}
+            className="text-medium"
             onClick={() => onOpenModal("move")}
           />
         </Tooltip>
@@ -62,6 +55,7 @@ function QuestionActionButtons({ canWrite, onOpenModal }) {
             onlyIcon
             icon="archive"
             iconSize={18}
+            className="text-medium"
             onClick={() => onOpenModal("archive")}
           />
         </Tooltip>
